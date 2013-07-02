@@ -1,6 +1,12 @@
+var ENV_PORT_PATH = process.env.SYABERUNO_PATH;
+if(typeof ENV_PORT_PATH == "undefined"){
+	console.log("ERROR : env SYABERUNO_PATH not exported!!");
+	process.kill();
+}
+
 
 var SerialPort = require("serialport").SerialPort
-var serialPort = new SerialPort("/dev/tty.usbserial-A6008hiA", {
+var serialPort = new SerialPort(ENV_PORT_PATH, {
 	baudrate: 9600,
 	databits: 8,
 	stopbits: 1,
@@ -11,7 +17,7 @@ var serialPort = new SerialPort("/dev/tty.usbserial-A6008hiA", {
 });
 
 if(typeof process.argv[2] == "undefined"){
-	message = "hikisuuganaiyo";
+	message = "defo^rutome^sse-gi";
 }else{
 	message = process.argv[2];
 }
