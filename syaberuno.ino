@@ -5,7 +5,10 @@
 
 byte mac[] = {
 	0x00, 0x50, 0xC2, 0x97, 0x21, 0x83 };
-IPAddress ip(192,168,1,252);
+IPAddress ip(192,168,132,146);
+IPAddress mask(255,255,254,0);
+IPAddress gateway(192,168,,0);
+IPAddress name(192,168,132,142);
 EthernetServer server(80);
 
 AquesTalk atp;
@@ -19,7 +22,7 @@ void setup() {
 
 
 	// start the Ethernet connection and the server:
-	Ethernet.begin(mac, ip);
+	Ethernet.begin(mac, ip, dns, gateway, mask);
 	server.begin();
 	Serial.print("server is at ");
 	Serial.println(Ethernet.localIP());

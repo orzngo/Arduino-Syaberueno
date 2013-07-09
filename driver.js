@@ -27,7 +27,7 @@ serialPort.on("open", function () {
 		setTimeout(function(str){
 			serialPort.write(str + "\r", function(err, results) {
 				console.log('"' + str + '" ' + 'SENDED!! (sent.)');
-				process.kill();
+				process.exit();
 			}); 
 		},500,str);
 	}
