@@ -18,7 +18,11 @@ public class Driver{
 		}
 		mes = rawMess + "\r\n";
 		try{
-			CommPortIdentifier portID = CommPortIdentifier.getPortIdentifier(System.getenv("SYABERUNO_PATH"));
+			String devPath = System.getenv("SYABERUNO_PATH");
+			if(devPath == null){
+				throw new Exception("env SYABERUNO_PATH not exported!!\n");
+			}
+			CommPortIdentifier portID = CommPortIdentifier.getPortIdentifier(devPath);
 			SerialPort port = (SerialPort)portID.open("Driver", 1000); 
 
 			port.setSerialPortParams(9600, SerialPort.DATABITS_8, SerialPort.STOPBITS_1, SerialPort.PARITY_NONE);
